@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.Test;
 import ru.netology.PhoneBook;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PhoneBookTest {
     @Test
@@ -32,5 +31,19 @@ public class PhoneBookTest {
         assertEquals("899989", phoneBook.findByName("Алиса"));
         assertEquals("45676754", phoneBook.findByName("Роберт"));
         assertNull(phoneBook.findByName("Ева")); // Несуществующее имя
+    }
+
+    @Test
+    public void testPrintAllNames() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Алиса", "899989");
+        phoneBook.add("Роберт", "45676754");
+        phoneBook.add("Карл", "6654457");
+
+        // Проверяем вывод всех имен
+        String[] expectedNames = {"Алиса", "Карл", "Роберт"};
+        String[] actualNames = new String[phoneBook.allNames.size()];
+        phoneBook.allNames.toArray(actualNames);
+        assertArrayEquals(expectedNames, actualNames);
     }
 }

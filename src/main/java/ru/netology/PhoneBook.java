@@ -34,4 +34,11 @@ public class PhoneBook {
     public String findByName(String name) {
         return contactsByName.get(name);
     }
+
+    public void printAllNames() {
+        //с помощью цикла проходим по коллекции и выводим в консоль имена
+        for (String name : allNames) {
+            System.out.println(name);
+        }
+    }
 }
